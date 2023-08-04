@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('hello', function () {
-    return response()->json(['message' => 'Hello, World!']);
-});
+
+Route::get('stories', 'App\Http\Controllers\StoryController@getAllStory');
+Route::get('stories/{id}', 'App\Http\Controllers\StoryController@getStoryById');
+Route::post('stories', 'App\Http\Controllers\StoryController@saveStory');
+Route::put('stories/{id}', 'App\Http\Controllers\StoryController@updateStory');
+Route::delete('stories/{id}', 'App\Http\Controllers\StoryController@deleteStory');
