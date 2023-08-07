@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stories', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->integer('illustrator_id')->nullable();
-            $table->integer('author_id')->nullable();
-            $table->string('title');
-            $table->string('language');
-            $table->string('type');
-            $table->string('thumbnail')->nullable();
+            $table->foreignId('story_id')->constrained('stories');
+            $table->integer('page_number');
+            $table->string('background');
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable()->default(null);
         });
@@ -29,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('stories');
-        Schema::dropIfExists('story');
+        Schema::dropIfExists('pages');
     }
 };
