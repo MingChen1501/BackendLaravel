@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            StorySeeder::class,
+            StoriesTableSeeder::class,
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

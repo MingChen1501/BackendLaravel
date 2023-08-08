@@ -20,7 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('stories', 'App\Http\Controllers\StoryController@getAllStory');
-Route::get('stories/{id}', 'App\Http\Controllers\StoryController@getStoryById');
+Route::get('stories/{id}', 'App\Http\Controllers\StoryController@show');
 Route::post('stories', 'App\Http\Controllers\StoryController@saveStory');
 Route::put('stories/{id}', 'App\Http\Controllers\StoryController@updateStory');
 Route::delete('stories/{id}', 'App\Http\Controllers\StoryController@deleteStory');
+
+Route::get('pages', 'App\Http\Controllers\PageController@index');
+Route::get('pages/{id}', 'App\Http\Controllers\PageController@show');
+Route::post('pages', 'App\Http\Controllers\PageController@store');
+Route::put('pages/{id}', 'App\Http\Controllers\PageController@update');
+Route::delete('pages/{id}', 'App\Http\Controllers\PageController@destroy');
+

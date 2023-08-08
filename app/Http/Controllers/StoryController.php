@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
+use App\Services\StoryService;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 class StoryController extends Controller
 {
+    public function __construct(protected StoryService $storyService)
+    {
+    }
     public function getAllStory(): JsonResponse
     {
         return response() -> json(Story::all(), 200);
@@ -58,4 +62,15 @@ class StoryController extends Controller
         }
         return response()->json(null, 202);
     }
+    public function show(Request $request, $id): \Illuminate\Http\JsonResponse
+    {
+        $queryParams = $request->all();
+        if (isset($queryParams['embed'])) {
+            $response = $this->storyService->indexWithEmbeds($id, $queryParams['embed']);
+        } else {
+            $response = Story::findOrFail($id);
+        }
+        return response()->json($response);
+    }
+
 }
