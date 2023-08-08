@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository\impl;
+namespace App\Repositories\impl;
 
 use App\Models\Page;
-use App\Repository\PageRepositoryInterface;
+use App\Repositories\PageRepositoryInterface;
 
 class PageRepositoryImpl implements PageRepositoryInterface
 {

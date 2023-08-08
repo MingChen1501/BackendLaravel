@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Author;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,10 +14,12 @@ class StoriesTableSeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 5; ++$i) {
+        $authors = Author::all();
+        foreach ($authors as $author) {
             $created_at = $faker->dateTimeBetween('-1 years', 'now');
             \App\Models\Story::create([
                 'title' => $faker->sentence,
+                'author_id' => $author->id,
                 'type' => $faker->randomElement(['image', 'object', 'animation']),
                 'thumbnail' => $faker->imageUrl(),
                 'language' => $faker->randomElement(['en', 'vi']),

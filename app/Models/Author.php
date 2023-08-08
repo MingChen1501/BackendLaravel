@@ -19,6 +19,14 @@ class Author extends Model
      *
      * */
     use HasFactory;
+    protected $table='authors';
+    protected $primaryKey='id';
+    protected $fillable=[
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'country',
+    ];
 
     /*
      * $table='author' is not necessary
