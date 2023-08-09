@@ -31,6 +31,5 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('stories');
-        Schema::dropIfExists('story');
     }
 };
