@@ -12,6 +12,7 @@ class Audio extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'text_id',
-        'url'
+        'url',
+        'sync_text_sound'
     ];
 }
