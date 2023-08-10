@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TextConfig extends Model
 {
@@ -16,4 +17,12 @@ class TextConfig extends Model
         'position',
         'order'
     ];
+    public function page(): BelongsTo
+    {
+        return $this->belongsTo(Page::class);
+    }
+    public function text(): BelongsTo
+    {
+        return $this->belongsTo(Text::class);
+    }
 }

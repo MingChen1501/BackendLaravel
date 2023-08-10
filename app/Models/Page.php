@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Page extends Model
 {
@@ -16,8 +18,12 @@ class Page extends Model
         'page_number',
         'background'
     ];
-    public function stories(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function story(): BelongsTo
     {
         return $this->belongsTo(Story::class);
+    }
+    public function textConfigs(): HasMany
+    {
+        return $this->hasMany(TextConfig::class);
     }
 }
