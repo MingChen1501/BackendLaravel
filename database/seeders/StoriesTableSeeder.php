@@ -20,7 +20,7 @@ class StoriesTableSeeder extends Seeder
             \App\Models\Story::create([
                 'title' => $faker->sentence,
                 'author_id' => $author->id,
-                'type' => $faker->randomElement(['image', 'object', 'animation']),
+                'type' => $faker->randomElement(['image', 'icon', 'animation']),
                 'thumbnail' => $faker->imageUrl(),
                 'language' => $faker->randomElement(['en', 'vi']),
                 'created_at' => $created_at,
