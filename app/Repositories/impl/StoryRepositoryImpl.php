@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository\impl;
+namespace App\Repositories\impl;
 
 use App\Models\Story;
-use App\Repository\StoryRepositoryInterface;
+use App\Repositories\StoryRepositoryInterface;
 
 class StoryRepositoryImpl implements StoryRepositoryInterface
 {

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repository\PageRepositoryInterface;
+use App\Repositories\PageRepositoryInterface;
 
 class PageService
 {

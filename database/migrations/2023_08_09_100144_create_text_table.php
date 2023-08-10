@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('texts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('story_id')->constrained('stories');
-            $table->integer('page_number');
-            $table->string('background');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable()->default(null);
+            $table->text('text');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('texts');
     }
 };

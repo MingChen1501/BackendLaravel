@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repository\StoryRepositoryInterface;
+use App\Repositories\StoryRepositoryInterface;
 
 class StoryService
 {

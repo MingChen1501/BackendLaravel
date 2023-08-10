@@ -1,5 +1,5 @@
 <?php
-namespace App\Repository;
+namespace App\Repositories;
 interface PageRepositoryInterface {
     public function getAll();
     public function getById($id);

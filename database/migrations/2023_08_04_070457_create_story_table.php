@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->integer('illustrator_id')->nullable();
-            $table->integer('author_id')->nullable();
+            $table->foreignId('illustrator_id')->nullable();
+            $table->foreignId('author_id')->nullable();
             $table->string('title');
             $table->string('language');
             $table->string('type');
@@ -31,6 +31,5 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('stories');
-        Schema::dropIfExists('story');
     }
 };

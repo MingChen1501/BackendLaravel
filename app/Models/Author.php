@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Author extends Model
 {
@@ -19,6 +20,18 @@ class Author extends Model
      *
      * */
     use HasFactory;
+    protected $table='authors';
+    protected $primaryKey='id';
+    protected $fillable=[
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'country',
+    ];
+    public function stories() : HasMany
+    {
+        return $this->hasMany(Story::class);
+    }
 
     /*
      * $table='author' is not necessary

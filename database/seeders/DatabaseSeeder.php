@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
+            AuthorTableSeeder::class,
             StoriesTableSeeder::class,
+            PagesTableSeeder::class,
+            TextsTableSeeder::class,
+            TextConfigsTableSeeder::class
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
