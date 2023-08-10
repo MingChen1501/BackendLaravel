@@ -17,22 +17,17 @@ class TextConfigsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        echo "seeding text configs...";
         $faker = Factory::create();
         $stories = Story::all();
         $texts = Text::all();
         $pages = Page::all();
         $textIndex = 1;
         foreach ($stories as $story) {
-            echo "story: " . $story->id . "\n";
             foreach ($pages as $page) {
-                echo "page: " . $page->id . "\n";
-                echo "page: " . $page->story_id . "\n";
                 foreach(range(1, 3) as $order) {
                     if ($textIndex > $texts->count()) {
                         return;
                     }
-                    echo "text: " . $texts->count() . "\n";
                     TextConfig::create([
                         'page_id' => $page->id,
                         'text_id' => $textIndex,
@@ -46,6 +41,5 @@ class TextConfigsTableSeeder extends Seeder
                 }
             }
         }
-        echo "done";
     }
 }
