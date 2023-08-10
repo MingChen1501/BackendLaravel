@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('text_configs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('page_id')->constrained('pages');
-            $table->foreignId('text_id');
+            $table->foreignId('text_id')->constrained('texts');
             $table->json('position');
             $table->integer('order');
             $table->timestamps();
