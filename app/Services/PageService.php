@@ -27,4 +27,25 @@ class PageService
     public function getById($id) {
         return $this->pageRepository->getById($id);
     }
+
+    public function getAllWithTexts(array $queryParams)
+    {
+        //TODO: dùng middleware để validate query params
+        foreach ($queryParams as $key => $value) {
+            if ($key === 'embed' && $value === 'texts') {
+                return $this->pageRepository->getAllWithTexts();
+            }
+        }
+        return $this->pageRepository->getAll();
+    }
+
+    public function getByIdWithParams($id, array|string $queryParams)
+    {
+        foreach ($queryParams as $key => $value) {
+            if ($key === 'embed' && $value === 'texts') {
+                return $this->pageRepository->getByIdWithTexts($id);
+            }
+        }
+        return $this->getById($id);
+    }
 }
