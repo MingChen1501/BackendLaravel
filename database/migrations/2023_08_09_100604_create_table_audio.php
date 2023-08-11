@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('audios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('text_id')->constrained('texts');
+            $table->foreignId('text_id')->unique()->constrained('texts');
             $table->string('url');
             $table->json('sync_text_sound')->nullable();
             $table->timestamps();
