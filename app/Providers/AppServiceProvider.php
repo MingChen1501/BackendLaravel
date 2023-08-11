@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\AudioRepositoryInterface;
+use App\Repositories\impl\AudioRepositoryImpl;
 use App\Repositories\StoryRepositoryInterface;
+use App\Services\AudioService;
 use App\Services\PageService;
 use App\Services\StoryService;
 use Illuminate\Support\ServiceProvider;
@@ -19,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\impl\PageRepositoryImpl::class
         );
         $this->app->bind(
-            PageService::class, function ($app) {
+            PageService::class,
+            function ($app) {
                 return new PageService($app->make(\App\Repositories\PageRepositoryInterface::class));
             }
         );
@@ -28,8 +32,19 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\impl\StoryRepositoryImpl::class
         );
         $this->app->bind(
-            StoryService::class, function ($app) {
+            StoryService::class,
+            function ($app) {
                 return new StoryService($app->make(StoryRepositoryInterface::class));
+            }
+        );
+        $this->app->bind(
+            AudioRepositoryInterface::class,
+            AudioRepositoryImpl::class
+        );
+        $this->app->bind(
+            AudioService::class,
+            function ($app) {
+                return new AudioService($app->make(AudioRepositoryInterface::class));
             }
         );
     }

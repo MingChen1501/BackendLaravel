@@ -31,3 +31,6 @@ Route::post('pages', 'App\Http\Controllers\PageController@store');
 Route::put('pages/{id}', 'App\Http\Controllers\PageController@update');
 Route::delete('pages/{id}', 'App\Http\Controllers\PageController@destroy');
 
+Route::get('audios', 'App\Http\Controllers\AudioController@index');
+Route::get('audios/{id}', 'App\Http\Controllers\AudioController@show');
+
