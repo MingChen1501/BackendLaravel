@@ -1,0 +1,13 @@
+<?php
+namespace App\Repositories;
+use Illuminate\Database\Eloquent\Model;
+
+interface PageRepositoryInterface {
+    public function getAll();
+    public function getById($id);
+    public function create(array $attributes);
+    public function update($id, array $attributes);
+    public function delete($id);
+    public function getAllWithTexts();
+    public function getByIdWithTexts($id);
+}
