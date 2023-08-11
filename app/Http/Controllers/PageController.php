@@ -3,27 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Services\PageService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class PageController extends Controller
 {
     public function __construct(protected PageService $pageService)
     {
     }
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(Request $request): JsonResponse
     {
+        $queryParams = $request->query();
+        if ($queryParams) {
+            return response()->json($this->pageService->getAllWithTexts($queryParams));
+        }
         return response()->json($this->pageService->getAll());
     }
-    public function show($id): \Illuminate\Http\JsonResponse
+    public function show($id, Request $request): JsonResponse
     {
-        $response = $this->pageService->getById($id);
-        if ($response !== null) {
-            return response()->json($response);
+        $queryParams = $request->query();
+        if ($queryParams) {
+            $response = $this->pageService->getByIdWithParams($id, $queryParams);
+            if ($response !== null) {
+                return response()->json($response);
+            } else {
+                return response()->json(['message' => 'Page not found'], 404);
+            }
         } else {
-            return response()->json(['message' => 'Page not found'], 404);
+            $response = $this->pageService->getById($id);
+            if ($response !== null) {
+                return response()->json($response);
+            } else {
+                return response()->json(['message' => 'Page not found'], 404);
+            }
         }
     }
-    public function store(Request $request): \Illuminate\Http\JsonResponse
+    public function store(Request $request): JsonResponse
     {
         try {
             $user = $this->pageService->create($request->all());
@@ -32,7 +48,7 @@ class PageController extends Controller
         }
         return response()->json($user, 201);
     }
-    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function update(Request $request, $id): JsonResponse
     {
         $response = $this->pageService->getById($id);
         if ($response === null) {
@@ -46,7 +62,7 @@ class PageController extends Controller
             return response()->json("success", 202);
         }
     }
-    public function destroy($id): \Illuminate\Http\JsonResponse
+    public function destroy($id): JsonResponse
     {
         try {
             $response = $this->pageService->delete($id);
