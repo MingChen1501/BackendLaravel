@@ -34,3 +34,6 @@ Route::delete('pages/{id}', 'App\Http\Controllers\PageController@destroy');
 Route::get('audios', 'App\Http\Controllers\AudioController@index');
 Route::get('audios/{id}', 'App\Http\Controllers\AudioController@show');
 
+Route::get('texts', 'App\Http\Controllers\TextController@index');
+Route::get('texts/{id}', 'App\Http\Controllers\TextController@show');
+
