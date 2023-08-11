@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\PageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class PageController extends Controller
 {
