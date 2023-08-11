@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             StoriesTableSeeder::class,
             PagesTableSeeder::class,
             TextsTableSeeder::class,
-            TextConfigsTableSeeder::class
+            TextConfigsTableSeeder::class,
+            AudiosTableSeeder::class,
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
