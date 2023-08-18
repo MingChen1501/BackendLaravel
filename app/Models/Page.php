@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Page extends Model
@@ -25,5 +26,13 @@ class Page extends Model
     public function textConfigs(): HasMany
     {
         return $this->hasMany(TextConfig::class);
+    }
+    public function texts(): BelongsToMany {
+        return $this->belongsToMany(
+            Text::class,
+            'text_configs',
+            'page_id',
+            'text_id'
+        )->withPivot('position', 'order');
     }
 }
