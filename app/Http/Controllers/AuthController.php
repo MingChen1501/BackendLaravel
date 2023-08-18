@@ -20,4 +20,10 @@ class AuthController extends Controller
             "access_token" => $token
         ]);
     }
+    public function logout() {
+        Auth::logout();
+        return response()->json([
+            "message" => "Logged out successfully"
+        ]);
+    }
 }
