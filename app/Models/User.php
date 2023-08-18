@@ -32,6 +32,6 @@ class User extends UserAuth implements JWTSubject
      */
     public function getJWTCustomClaims(): array
     {
-        return ['username','first_name','last_name'];
+        return [$this->username, $this->first_name, $this->last_name];
     }
 }
