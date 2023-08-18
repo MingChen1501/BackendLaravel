@@ -37,6 +37,8 @@ Route::group(["middleware" => ["jwt"]], function(){
 
     Route::get('texts', 'App\Http\Controllers\TextController@index');
     Route::get('texts/{id}', 'App\Http\Controllers\TextController@show');
+
+    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 });
 
 
